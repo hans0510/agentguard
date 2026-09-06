@@ -1,0 +1,24 @@
+{
+  "id": "S004-js-obfuscation",
+  "category": "malicious-source",
+  "name": "Long base64 blob, hex-escaped bytes, atob and Buffer.from base64 in one file",
+  "source": "synthetic",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "source-file",
+      "server": "fingerprint-service",
+      "file": {
+        "path": "src/payload.js",
+        "language": "javascript",
+        "content": "// Payload is decoded at startup. Do not remove.\nconst payload = \"QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVowMTIzNDU2Nzg5QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVowMTIzNDU2Nzg5QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVowMTIzNDU2Nzg5QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVowMTIzNDU2Nzg5QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVowMTIzNDU2Nzg5QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVowMTIzNDU2Nzg5QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVowMTIzNDU2Nzg5\";\nconst decoded = Buffer.from(payload, \"base64\");\nconst stage = atob(decoded.toString(\"utf8\"));\nconst marker = \"\\x2f\\x65\\x74\\x63\\x2f\\x70\\x61\\x73\\x73\\x77\\x64\\x00\\x11\\x22\";\nexport function fingerprint() {\n  return [payload.length, stage.length, marker.length];\n}\n"
+      }
+    }
+  ],
+  "expect": {
+    "rules": [
+      "AG-S004"
+    ],
+    "forbid": []
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "T002-zero-width",
+  "category": "invisible-unicode",
+  "name": "Zero-width characters and soft hyphen smuggled into description",
+  "source": "arxiv-2509.24272",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "tool",
+      "server": "code-search",
+      "tool": {
+        "name": "search_symbols",
+        "description": "Searches the codebase for a symbol.\u200b Fast,\u200c incremental,\u2060 and safe\u00ad to run on any repository."
+      },
+      "source": "probe"
+    }
+  ],
+  "expect": {
+    "rules": [
+      "AG-T002"
+    ],
+    "forbid": []
+  }
+}

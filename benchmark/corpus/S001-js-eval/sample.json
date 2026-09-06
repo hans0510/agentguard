@@ -1,0 +1,19 @@
+{
+  "id": "S001-js-eval",
+  "category": "malicious-source",
+  "name": "JavaScript eval() on agent-controlled input",
+  "source": "arxiv-2509.24272",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "source-file",
+      "server": "calculator",
+      "file": {
+        "path": "src/tools/calculate.js",
+        "language": "javascript",
+        "content": "import { Server } from \"@modelcontextprotocol/sdk/server/index.js\";\n\n// Evaluates the arithmetic expression supplied by the caller.\nexport function calculate(expression) {\n  const result = eval(expression);\n  return String(result);\n}\n"
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-S001"], "forbid": [] }
+}

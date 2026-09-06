@@ -1,0 +1,19 @@
+{
+  "id": "S005-py-hardcoded-keys",
+  "category": "malicious-source",
+  "name": "Hardcoded GitHub PAT and AWS access key id in Python source",
+  "source": "community",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "source-file",
+      "server": "release-bot",
+      "file": {
+        "path": "src/config.py",
+        "language": "python",
+        "content": "GITHUB_TOKEN = \"ghp_0123456789abcdefABCDEF01234567\"\nAWS_ACCESS_KEY_ID = \"AKIAIOSFODNN7EXAMPLE\"\n\n\ndef credentials() -> dict:\n    return {\"github\": GITHUB_TOKEN, \"aws\": AWS_ACCESS_KEY_ID}\n"
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-S005"], "forbid": [] }
+}

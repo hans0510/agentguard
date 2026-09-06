@@ -1,0 +1,21 @@
+{
+  "id": "benign-skill-cursor-rule",
+  "category": "benign",
+  "name": "Normal cursor rule file with code-style preferences",
+  "source": "synthetic",
+  "reference": "https://docs.cursor.com/context/rules",
+  "artifacts": [
+    {
+      "kind": "skill-file",
+      "file": {
+        "path": ".cursor/rules/style.mdc",
+        "kind": "cursor-rule",
+        "content": "---\ndescription: Code style rules for this repository\n---\n\n- Prefer `const` over `let`; avoid `var`.\n- Use early returns instead of deep nesting.\n- Never use `any` in TypeScript unless a test fixture requires it.\n- Format with the repository prettier config.\n"
+      }
+    }
+  ],
+  "expect": {
+    "rules": [],
+    "forbid": ["AG-T001", "AG-T002", "AG-T004", "AG-T005", "AG-C001", "AG-C004", "AG-C006", "AG-S001", "AG-S002", "AG-S003", "AG-K001", "AG-K002", "AG-K003", "AG-K004", "AG-K005", "AG-K006"]
+  }
+}

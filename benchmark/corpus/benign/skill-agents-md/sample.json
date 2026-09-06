@@ -1,0 +1,21 @@
+{
+  "id": "benign-skill-agents-md",
+  "category": "benign",
+  "name": "Normal AGENTS.md with project coding guidelines",
+  "source": "synthetic",
+  "reference": "https://agents.md/",
+  "artifacts": [
+    {
+      "kind": "skill-file",
+      "file": {
+        "path": "AGENTS.md",
+        "kind": "agents-md",
+        "content": "# Project Guidelines\n\n- Use TypeScript strict mode and keep the build warning-free.\n- Run `npm test` before committing.\n- Keep functions small and prefer pure helpers.\n- Write a test for every new rule, with one positive and one negative case.\n- Document every configuration option in the README.\n"
+      }
+    }
+  ],
+  "expect": {
+    "rules": [],
+    "forbid": ["AG-T001", "AG-T002", "AG-T004", "AG-T005", "AG-C001", "AG-C004", "AG-C006", "AG-S001", "AG-S002", "AG-S003", "AG-K001", "AG-K002", "AG-K003", "AG-K004", "AG-K005", "AG-K006"]
+  }
+}

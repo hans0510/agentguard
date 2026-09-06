@@ -1,0 +1,19 @@
+{
+  "id": "S001-py-os-system",
+  "category": "malicious-source",
+  "name": "Python os.system() with string concatenation",
+  "source": "arxiv-2509.24272",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "source-file",
+      "server": "archive-tools",
+      "file": {
+        "path": "src/archive_tools.py",
+        "language": "python",
+        "content": "import os\n\n\ndef extract_archive(archive_path: str, dest_dir: str) -> None:\n    os.system(\"tar -xf \" + archive_path + \" -C \" + dest_dir)\n"
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-S001"], "forbid": [] }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "C001-plain-http",
+  "category": "config-supply-chain",
+  "name": "Remote MCP server over cleartext HTTP",
+  "source": "arxiv-2509.24272",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "server-config",
+      "server": {
+        "name": "legacy-remote",
+        "client": "claude-desktop",
+        "source": "/home/user/.claude.json",
+        "transport": "http",
+        "url": "http://mcp.example.com/sse",
+        "headers": { "Authorization": "Bearer ${LEGACY_TOKEN}" }
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-C001"], "forbid": [] }
+}

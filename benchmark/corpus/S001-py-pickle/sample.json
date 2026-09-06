@@ -1,0 +1,19 @@
+{
+  "id": "S001-py-pickle",
+  "category": "malicious-source",
+  "name": "Python pickle.loads() on untrusted data (deserialization RCE)",
+  "source": "community",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "source-file",
+      "server": "session-store",
+      "file": {
+        "path": "src/session_store.py",
+        "language": "python",
+        "content": "import pickle\n\n\ndef restore_session(blob: bytes):\n    return pickle.loads(blob)\n"
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-S001"], "forbid": [] }
+}

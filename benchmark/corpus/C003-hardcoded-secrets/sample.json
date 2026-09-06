@@ -1,0 +1,26 @@
+{
+  "id": "C003-hardcoded-secrets",
+  "category": "config-supply-chain",
+  "name": "OpenAI, GitHub and AWS keys hardcoded in server env config",
+  "source": "community",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "server-config",
+      "server": {
+        "name": "ai-assistant",
+        "client": "claude-desktop",
+        "source": "/home/user/.claude.json",
+        "transport": "stdio",
+        "command": "node",
+        "args": ["/opt/mcp/assistant/index.js"],
+        "env": {
+          "OPENAI_API_KEY": "sk-aaaabbbbccccddddeeeeffff00001111",
+          "GITHUB_TOKEN": "ghp_0123456789abcdefABCDEF01234567",
+          "AWS_ACCESS_KEY_ID": "AKIAIOSFODNN7EXAMPLE"
+        }
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-C003"], "forbid": [] }
+}

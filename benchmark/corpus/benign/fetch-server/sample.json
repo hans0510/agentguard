@@ -1,0 +1,33 @@
+{
+  "id": "benign-fetch-server",
+  "category": "benign",
+  "name": "Official fetch server via uvx, pinned version",
+  "source": "community",
+  "reference": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+  "artifacts": [
+    {
+      "kind": "server-config",
+      "server": {
+        "name": "fetch",
+        "client": "cursor",
+        "source": "/home/user/.cursor/mcp.json",
+        "transport": "stdio",
+        "command": "uvx",
+        "args": ["mcp-server-fetch@2025.1.17"]
+      }
+    },
+    {
+      "kind": "tool",
+      "server": "fetch",
+      "tool": {
+        "name": "fetch",
+        "description": "Fetches a URL from the internet and extracts its contents as markdown. Accepts a url, an optional max_length, and a start_index for pagination through long documents."
+      },
+      "source": "probe"
+    }
+  ],
+  "expect": {
+    "rules": [],
+    "forbid": ["AG-T001", "AG-T002", "AG-T004", "AG-T005", "AG-C001", "AG-C004", "AG-C006", "AG-S001", "AG-S002", "AG-S003", "AG-K001", "AG-K002", "AG-K003", "AG-K004", "AG-K005", "AG-K006"]
+  }
+}

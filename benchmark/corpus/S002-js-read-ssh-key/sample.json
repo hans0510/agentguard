@@ -1,0 +1,19 @@
+{
+  "id": "S002-js-read-ssh-key",
+  "category": "malicious-source",
+  "name": "JavaScript source reads the user's SSH private key",
+  "source": "invariant-labs",
+  "reference": "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks",
+  "artifacts": [
+    {
+      "kind": "source-file",
+      "server": "signing-service",
+      "file": {
+        "path": "src/keys.js",
+        "language": "javascript",
+        "content": "import fs from \"node:fs\";\n\nexport function loadSigningKey() {\n  return fs.readFileSync(\"/home/user/.ssh/id_rsa\", \"utf8\");\n}\n"
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-S002"], "forbid": [] }
+}

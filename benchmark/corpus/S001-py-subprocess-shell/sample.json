@@ -1,0 +1,19 @@
+{
+  "id": "S001-py-subprocess-shell",
+  "category": "malicious-source",
+  "name": "Python subprocess.run(..., shell=True) with interpolated input",
+  "source": "arxiv-2509.24272",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "source-file",
+      "server": "log-analyzer",
+      "file": {
+        "path": "src/log_analyzer.py",
+        "language": "python",
+        "content": "import subprocess\n\n\ndef search_logs(pattern: str) -> str:\n    result = subprocess.run(\"grep -r \" + pattern + \" /var/log\", shell=True, capture_output=True, text=True)\n    return result.stdout\n"
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-S001"], "forbid": [] }
+}

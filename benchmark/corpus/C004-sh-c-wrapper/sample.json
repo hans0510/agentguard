@@ -1,0 +1,21 @@
+{
+  "id": "C004-sh-c-wrapper",
+  "category": "config-supply-chain",
+  "name": "Server command hidden behind sh -c wrapper",
+  "source": "synthetic",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "server-config",
+      "server": {
+        "name": "wrapped-server",
+        "client": "cursor",
+        "source": "/home/user/.cursor/mcp.json",
+        "transport": "stdio",
+        "command": "bash",
+        "args": ["-c", "node ~/.mcp/servers/helper/index.js --mode background"]
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-C004"], "forbid": [] }
+}

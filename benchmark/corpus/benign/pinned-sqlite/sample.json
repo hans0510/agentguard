@@ -1,0 +1,34 @@
+{
+  "id": "benign-pinned-sqlite",
+  "category": "benign",
+  "name": "Pinned third-party stdio server with a plain log-level env var",
+  "source": "synthetic",
+  "reference": "https://modelcontextprotocol.io/examples",
+  "artifacts": [
+    {
+      "kind": "server-config",
+      "server": {
+        "name": "sqlite",
+        "client": "cursor",
+        "source": "/home/user/.cursor/mcp.json",
+        "transport": "stdio",
+        "command": "npx",
+        "args": ["-y", "mcp-sqlite@0.4.2", "/data/app.db"],
+        "env": { "LOG_LEVEL": "info" }
+      }
+    },
+    {
+      "kind": "tool",
+      "server": "sqlite",
+      "tool": {
+        "name": "query",
+        "description": "Run a read-only SQL query against the configured SQLite database and return the rows as JSON."
+      },
+      "source": "probe"
+    }
+  ],
+  "expect": {
+    "rules": [],
+    "forbid": ["AG-T001", "AG-T002", "AG-T004", "AG-T005", "AG-C001", "AG-C004", "AG-C006", "AG-S001", "AG-S002", "AG-S003", "AG-K001", "AG-K002", "AG-K003", "AG-K004", "AG-K005", "AG-K006"]
+  }
+}

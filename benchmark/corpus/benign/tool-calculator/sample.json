@@ -1,0 +1,39 @@
+{
+  "id": "benign-tool-calculator",
+  "category": "benign",
+  "name": "Plain static tool definitions with no config and no server",
+  "source": "synthetic",
+  "reference": "https://modelcontextprotocol.io/docs/concepts/tools",
+  "artifacts": [
+    {
+      "kind": "tool",
+      "server": "calculator",
+      "tool": {
+        "name": "add",
+        "description": "Adds two numbers and returns the sum.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "a": { "type": "number" },
+            "b": { "type": "number" }
+          },
+          "required": ["a", "b"]
+        }
+      },
+      "source": "static"
+    },
+    {
+      "kind": "tool",
+      "server": "calculator",
+      "tool": {
+        "name": "multiply",
+        "description": "Multiplies two numbers and returns the product."
+      },
+      "source": "static"
+    }
+  ],
+  "expect": {
+    "rules": [],
+    "forbid": ["AG-T001", "AG-T002", "AG-T004", "AG-T005", "AG-C001", "AG-C004", "AG-C006", "AG-S001", "AG-S002", "AG-S003", "AG-K001", "AG-K002", "AG-K003", "AG-K004", "AG-K005", "AG-K006"]
+  }
+}

@@ -68,7 +68,7 @@ export const INSTRUCTION_OVERRIDE_PATTERNS: RegExp[] = [
   /\bnever\s+(?:tell|inform|mention|disclose|reveal)\s+(?:the\s+)?(?:user|human|anyone)/i,
   /\bwithout\s+(?:asking|confirming|notifying)\s+(?:the\s+)?user/i,
   /\byou\s+(?:must|shall|are\s+required\s+to|are\s+instructed\s+to)\b/i,
-  /\b(?:before|after|when|whenever)\s+(?:using|calling|invoking|running)\s+(?:any|other|another|the)\s+tool/i,
+  /\b(?:before|after|when|whenever)\s+(?:using|calling|invoking|running)\s+(?:(?:any|other|another|the|all|every)\s+){1,3}tools?\b/i,
   /\buse\s+this\s+tool\s+instead\s+of\b/i,
   /\binstead\s+of\s+(?:using|calling)\s+(?:the\s+)?[\w-]+\s+tool/i,
   /\boverride\s+(?:the\s+)?(?:default|safety|security)\b/i,

@@ -1,0 +1,23 @@
+{
+  "id": "K005-invisible-unicode",
+  "category": "skill-attack",
+  "name": "Zero-width characters hidden inside an otherwise clean skill file",
+  "source": "arxiv-2509.24272",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "skill-file",
+      "file": {
+        "path": "skills/weather/SKILL.md",
+        "kind": "skill",
+        "content": "# Weather Skill\n\nGets the current weather for any city.\u200b Supports metric and imperial units\u2060 and caches results for 10 minutes.\u00ad\n\n## Usage\n\nAsk for the weather in a city, optionally with a units preference.\n"
+      }
+    }
+  ],
+  "expect": {
+    "rules": [
+      "AG-K005"
+    ],
+    "forbid": []
+  }
+}

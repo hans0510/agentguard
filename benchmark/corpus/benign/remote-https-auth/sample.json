@@ -1,0 +1,24 @@
+{
+  "id": "benign-remote-https-auth",
+  "category": "benign",
+  "name": "Remote MCP server over HTTPS with an Authorization header",
+  "source": "synthetic",
+  "reference": "https://modelcontextprotocol.io/specification",
+  "artifacts": [
+    {
+      "kind": "server-config",
+      "server": {
+        "name": "company-kb",
+        "client": "claude-desktop",
+        "source": "/home/user/.claude.json",
+        "transport": "http",
+        "url": "https://mcp.internal.example.com/mcp",
+        "headers": { "Authorization": "Bearer ${KB_TOKEN}" }
+      }
+    }
+  ],
+  "expect": {
+    "rules": [],
+    "forbid": ["AG-T001", "AG-T002", "AG-T004", "AG-T005", "AG-C001", "AG-C004", "AG-C006", "AG-S001", "AG-S002", "AG-S003", "AG-K001", "AG-K002", "AG-K003", "AG-K004", "AG-K005", "AG-K006"]
+  }
+}

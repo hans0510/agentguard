@@ -1,0 +1,43 @@
+{
+  "id": "benign-github-server",
+  "category": "benign",
+  "name": "Official GitHub server: pinned package, env-var token reference",
+  "source": "community",
+  "reference": "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
+  "artifacts": [
+    {
+      "kind": "server-config",
+      "server": {
+        "name": "github",
+        "client": "claude-desktop",
+        "source": "/home/user/.claude.json",
+        "transport": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github@2025.4.8"],
+        "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}" }
+      }
+    },
+    {
+      "kind": "tool",
+      "server": "github",
+      "tool": {
+        "name": "create_issue",
+        "description": "Create a new issue in a GitHub repository with a title, body, and optional labels and assignees."
+      },
+      "source": "probe"
+    },
+    {
+      "kind": "tool",
+      "server": "github",
+      "tool": {
+        "name": "search_repositories",
+        "description": "Search for GitHub repositories using GitHub's repository search syntax."
+      },
+      "source": "probe"
+    }
+  ],
+  "expect": {
+    "rules": [],
+    "forbid": ["AG-T001", "AG-T002", "AG-T004", "AG-T005", "AG-C001", "AG-C004", "AG-C006", "AG-S001", "AG-S002", "AG-S003", "AG-K001", "AG-K002", "AG-K003", "AG-K004", "AG-K005", "AG-K006"]
+  }
+}

@@ -32,7 +32,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "benchmark": "tsc -p benchmark/tsconfig.json && node benchmark/dist/benchmark/run.js"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

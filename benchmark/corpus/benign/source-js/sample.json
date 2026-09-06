@@ -1,0 +1,22 @@
+{
+  "id": "benign-source-js",
+  "category": "benign",
+  "name": "Clean JavaScript MCP server source (argv-array exec, no network, no secrets)",
+  "source": "synthetic",
+  "reference": "https://github.com/modelcontextprotocol/typescript-sdk",
+  "artifacts": [
+    {
+      "kind": "source-file",
+      "server": "workspace-tools",
+      "file": {
+        "path": "src/tools.js",
+        "language": "javascript",
+        "content": "import { execFileSync } from \"node:child_process\";\nimport fs from \"node:fs\";\n\nexport function listFiles(dir) {\n  return fs.readdirSync(dir);\n}\n\nexport function gitStatus(cwd) {\n  return execFileSync(\"git\", [\"status\", \"--short\"], { cwd, encoding: \"utf8\" });\n}\n\nexport function loadConfig(configPath) {\n  return JSON.parse(fs.readFileSync(configPath, \"utf8\"));\n}\n"
+      }
+    }
+  ],
+  "expect": {
+    "rules": [],
+    "forbid": ["AG-T001", "AG-T002", "AG-T004", "AG-T005", "AG-C001", "AG-C004", "AG-C006", "AG-S001", "AG-S002", "AG-S003", "AG-K001", "AG-K002", "AG-K003", "AG-K004", "AG-K005", "AG-K006"]
+  }
+}

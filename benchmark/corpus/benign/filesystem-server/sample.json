@@ -1,0 +1,51 @@
+{
+  "id": "benign-filesystem-server",
+  "category": "benign",
+  "name": "Official filesystem server: pinned package, stock tool descriptions",
+  "source": "community",
+  "reference": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+  "artifacts": [
+    {
+      "kind": "server-config",
+      "server": {
+        "name": "filesystem",
+        "client": "claude-desktop",
+        "source": "/home/user/.claude.json",
+        "transport": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem@2025.3.28", "/data/workspace"]
+      }
+    },
+    {
+      "kind": "tool",
+      "server": "filesystem",
+      "tool": {
+        "name": "read_file",
+        "description": "Read the complete contents of a file from the file system. Handles various text encodings and provides detailed error messages if the file cannot be read."
+      },
+      "source": "probe"
+    },
+    {
+      "kind": "tool",
+      "server": "filesystem",
+      "tool": {
+        "name": "write_file",
+        "description": "Create a new file or completely overwrite an existing file with new content. Use with caution as it will overwrite existing files."
+      },
+      "source": "probe"
+    },
+    {
+      "kind": "tool",
+      "server": "filesystem",
+      "tool": {
+        "name": "list_directory",
+        "description": "Get a detailed listing of all files and directories in a specified path, including sizes and modification dates."
+      },
+      "source": "probe"
+    }
+  ],
+  "expect": {
+    "rules": [],
+    "forbid": ["AG-T001", "AG-T002", "AG-T004", "AG-T005", "AG-C001", "AG-C004", "AG-C006", "AG-S001", "AG-S002", "AG-S003", "AG-K001", "AG-K002", "AG-K003", "AG-K004", "AG-K005", "AG-K006"]
+  }
+}

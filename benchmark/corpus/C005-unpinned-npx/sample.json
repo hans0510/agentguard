@@ -1,0 +1,21 @@
+{
+  "id": "C005-unpinned-npx",
+  "category": "config-supply-chain",
+  "name": "Server executed via npx without a version pin (rug-pull channel)",
+  "source": "invariant-labs",
+  "reference": "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks",
+  "artifacts": [
+    {
+      "kind": "server-config",
+      "server": {
+        "name": "db-browser",
+        "client": "cursor",
+        "source": "/home/user/.cursor/mcp.json",
+        "transport": "stdio",
+        "command": "npx",
+        "args": ["-y", "acme-database-mcp"]
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-C005"], "forbid": ["AG-C006"] }
+}

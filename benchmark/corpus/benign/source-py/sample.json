@@ -1,0 +1,22 @@
+{
+  "id": "benign-source-py",
+  "category": "benign",
+  "name": "Clean Python MCP server source (fixed API base, argv-list subprocess)",
+  "source": "synthetic",
+  "reference": "https://github.com/modelcontextprotocol/python-sdk",
+  "artifacts": [
+    {
+      "kind": "source-file",
+      "server": "repo-browser",
+      "file": {
+        "path": "src/repo_browser.py",
+        "language": "python",
+        "content": "import json\nimport subprocess\n\nimport requests\n\nAPI_BASE = \"https://api.github.com\"\n\n\ndef list_repos(org: str) -> list:\n    response = requests.get(f\"{API_BASE}/orgs/{org}/repos\", timeout=10)\n    response.raise_for_status()\n    return response.json()\n\n\ndef git_status(path: str) -> str:\n    result = subprocess.run([\"git\", \"status\", \"--short\"], cwd=path, capture_output=True, text=True)\n    return result.stdout\n\n\ndef load_config(config_path: str) -> dict:\n    with open(config_path, encoding=\"utf-8\") as handle:\n        return json.load(handle)\n"
+      }
+    }
+  ],
+  "expect": {
+    "rules": [],
+    "forbid": ["AG-T001", "AG-T002", "AG-T004", "AG-T005", "AG-C001", "AG-C004", "AG-C006", "AG-S001", "AG-S002", "AG-S003", "AG-K001", "AG-K002", "AG-K003", "AG-K004", "AG-K005", "AG-K006"]
+  }
+}

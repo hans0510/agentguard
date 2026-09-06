@@ -1,0 +1,19 @@
+{
+  "id": "S001-js-exec-template",
+  "category": "malicious-source",
+  "name": "child_process exec() with a template-literal command (command injection)",
+  "source": "arxiv-2509.24272",
+  "reference": "https://arxiv.org/abs/2509.24272",
+  "artifacts": [
+    {
+      "kind": "source-file",
+      "server": "repo-manager",
+      "file": {
+        "path": "src/tools/clone.js",
+        "language": "javascript",
+        "content": "import { exec } from \"node:child_process\";\n\nexport function cloneRepo(repoUrl, targetDir) {\n  return exec(`git clone ${repoUrl} ${targetDir}`);\n}\n"
+      }
+    }
+  ],
+  "expect": { "rules": ["AG-S001"], "forbid": [] }
+}
