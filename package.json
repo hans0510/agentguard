@@ -1,0 +1,42 @@
+{
+  "name": "agentguard",
+  "version": "0.1.0",
+  "description": "Security scanner for AI agents: MCP servers, agent skills, and tool configs. Think npm audit for AI agents.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "agentguard": "dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./rules": "./dist/rules/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agent",
+    "security",
+    "scanner",
+    "tool-poisoning",
+    "prompt-injection",
+    "claude",
+    "cursor",
+    "agent-skills"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
